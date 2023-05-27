@@ -5,6 +5,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.springsercuitydemo.entity.ResponseResult;
 import com.example.springsercuitydemo.entity.User;
@@ -40,6 +41,12 @@ public class UserController {
     @PostMapping("/register")
     public ResponseResult register(@RequestBody User user) {
         return UserService.register(user);
+    }
+
+    @RequestMapping("/test")
+    public ResponseResult test(@RequestParam("id") String id) {
+        System.out.println(id);
+        return new ResponseResult(200, id);
     }
 
 }
